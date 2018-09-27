@@ -1,0 +1,17 @@
+Package: pdfreport
+Title: A template for pdf report written in Rmarkdown
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Sebastien",
+           family = "Rochette",
+           role = c("aut", "cre"),
+           email = "sebastien@thinkr.fr")
+Description: Create a tex file that defines caracteristics of
+    your PDF report template.
+License: MIT + file LICENSE
+Imports: 
+    magrittr
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.1.0
