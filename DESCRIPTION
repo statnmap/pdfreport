@@ -10,7 +10,14 @@ Description: Create a tex file that defines caracteristics of
     your PDF report template.
 License: MIT + file LICENSE
 Imports: 
+    bookdown,
+    grDevices,
     magrittr
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: 
+    knitr
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)

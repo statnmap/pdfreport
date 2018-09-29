@@ -1,0 +1,339 @@
+
+    % \documentclass[a4paper]{article}
+    % Lang EN = 1, FR = 2
+    % \def\Lang{\Sexpr{Lang}} %
+    % -- Command to find which language is loaded in babel -- %
+    % http://tex.stackexchange.com/questions/287667/ifpackagewith-doesnt-behave-as-i-expected-with-global-options
+    \usepackage{xparse}
+    \ExplSyntaxOn
+    \NewDocumentCommand{\packageoptionsTF}{mmmm}
+    {
+    \stanton_package_options:nnTF { #1 } { #2 } { #3 } { #4 }
+    }
+
+    \cs_new_protected:Nn \stanton_package_options:nnTF
+    {
+    \clist_map_inline:nn { #2 }
+    {
+    \clist_if_in:cnTF { opt@#1.sty } { ##1 }
+    { #3 } % it is a local option
+    {
+      \clist_if_in:cnTF { @classoptionslist } { ##1 }
+        { #3 } % it is a global option
+          { #4 }
+          }
+        }
+      }
+      \ExplSyntaxOff
+
+      % -- Define a variable depending on language -- %
+        \newcommand{\Lang}{0}
+
+      \makeatletter
+      \@ifpackageloaded{babel}{
+        \packageoptionsTF{babel}{english}{%
+          \renewcommand{\Lang}{1}% english
+        }{%
+          \renewcommand{\Lang}{2}% french
+        }
+      }{}
+      \makeatother
+
+      % -- Define specific lateX options depending on language -- %
+        \ifnum\Lang = 1
+      % \usepackage[english]{babel}
+      \usepackage{enumitem}
+      \setlist{itemsep = 0pt}
+      \setlist{topsep = 0pt}
+      \fi
+      \ifnum\Lang = 2
+      % \usepackage[french]{babel}
+      \fi
+
+      % --
+     % \input{/mnt/Data/ThinkR/Gitlab/vignette-thinkr/latex/MiseEnPageRmd.tex")}
+       
+% === BEGIN OF pdf_layout === %
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+%\usepackage{amssymb,amsfonts,textcomp}
+\usepackage{color}
+\usepackage{array}
+\usepackage{hhline}
+%\usepackage[linktocpage=true]{hyperref} % to have only number clickable in toc
+\hypersetup{linktocpage=true, colorlinks=true, linkcolor=[RGB]{246,116,18}, citecolor=[RGB]{246,116,18}, filecolor=[RGB]{246,116,18}, urlcolor=[RGB]{246,116,18}}
+%\usepackage[pdftex]{graphicx}
+\usepackage{tikz}
+%\usepackage{float} % To force figure to be placed where I want with H
+% do not use float as it changes space between figures and their caption.
+% Better use [!h] option for figures
+\usepackage[normalem]{ulem} % to underline text on multiple lines
+
+\renewcommand{\emph}[1]{\textit{#1}}
+
+\usepackage{lmodern} % For higher definition fonts
+\usepackage[font = footnotesize, labelfont = bf, margin = 1cm]{caption} %name=Fig.
+
+% Text styles
+\newcommand\majorstylecolor[1]{\textcolor[RGB]{25,42,199}{#1}}
+\newcommand\urlstylecolor[1]{\textcolor[RGB]{246,116,18}{#1}}
+\newcommand\Greytext[1]{\textcolor[RGB]{75,75,75}{#1}}
+\newcommand\LightGrey[1]{\textcolor[RGB]{173,169,174}{#1}}
+\newcommand\OtherGrey[1]{\textcolor[RGB]{200,200,200}{#1}}
+
+
+% List styles
+%\newcommand\liststyleWWviiiNumii{%
+%\renewcommand\labelitemi{{\textbullet}}
+%\renewcommand\labelitemii{{\textbullet}}
+%\renewcommand\labelitemiii{{\textbullet}}
+%\renewcommand\labelitemiv{{\textbullet}}
+%}
+
+\AtBeginDocument{
+\def\labelitemi{$\bullet$}%
+\def\labelitemii{$\circ$}%
+\def\labelitemiii{$-$}%
+\def\labelitemiv{$-$}%
+}
+
+% FIGURES
+% \graphicspath{{/mnt/Data/Formation_SIG-et-R/00_Original_TD_support/img_QGIS/}{/mnt/Data/Formation_SIG-et-R/00_Original_TD_support/figureR/}{/mnt/Data/Formation_SIG-et-R/00_Original_TD_support/Figures_Pres/}{/mnt/Data/autoentrepreneur/Presentation_Produits/SRochettePresentation-img/}}
+
+%\setlength{\abovecaptionskip}{5pt}
+%\setlength{\belowcaptionskip}{10pt}
+
+
+% DIMENSIONS - MARGINS
+% \usepackage[top=2.4cm, bottom=2.1cm, outer=2cm, inner=4cm, headheight=40pt]{geometry} %heightrounded
+%\setlength\hoffset{0cm}
+%\setlength\voffset{0cm}
+\setlength\topmargin{-2cm}
+%\setlength\headheight{2cm}
+\setlength\headsep{0.50cm}
+%\setlength\textheight{25.7cm}
+\setlength\footskip{1.1cm}
+\setlength{\parindent}{0em}
+%\setlength{\parskip}{0em}
+\setlength\belowcaptionskip{5pt}
+\setlength\abovecaptionskip{8pt}
+%\let\oldfigure\figure
+%\let\oldtable\table
+%\def\figure{\setlength\abovecaptionskip{5pt}\oldfigure}
+%\def\table{\setlength\belowcaptionskip{1cm}\oldtable}
+%\usepackage{caption} %[font = small]
+%\setlength{\abovecaptionskip}{10pt plus 5pt minus 5pt}
+%\captionsetup[table]{skip = 10pt}
+%\captionsetup[figure]{skip = 10pt}
+%\setlength\longindentation 0.60\textwidth
+
+% \usepackage{lastpage} % to calculate number of pages to put in footer
+\usepackage{pageslts}
+
+% ----------
+% BACKGROUND
+% ----------
+\usepackage{eso-pic}
+\newcommand\BackgroundPic{%
+\put(0,0){%
+\parbox[b][\paperheight]{\paperwidth}{%
+\vfill
+\centering
+\includegraphics[width=\paperwidth,height=\paperheight]{Background_lightblue_topdown.png}%
+\vfill
+}}}
+\newcommand\BackgroundPicTitle{%
+\put(0,0){%
+\parbox[b][\paperheight]{\paperwidth}{%
+\vfill
+\centering
+\includegraphics[width=\paperwidth,height=\paperheight]{Background_Title_lightblue.png}%
+\vfill
+}}}
+
+%...and this immediately after \begin{document}:
+%\AddToShipoutPicture*{\BackgroundPic}
+%The * will make sure that the background picture will only be put on one page.
+%If you wish to use the picture on multiple pages, skip the *:
+%\AddToShipoutPicture{\BackgroundPic}
+%Then use this command to stop using the background picture:
+%\ClearShipoutPicture
+
+% === END OF pdf_layout === %
+    
+       % \input{/mnt/Data/ThinkR/Gitlab/vignette-thinkr/latex/MiseEnFormeTitreFormationRmd.tex")}
+       
+  % ----------
+% BEGIN pdf_sections
+  % ----------
+% MISE EN FORME DES TITRES
+       % ----------
+       %\renewcommand{\thesection}{\arabic{section}}
+       %\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
+       %\renewcommand{\thesubsubsection}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
+
+       %% Provide a definition to \subparagraph to keep titlesec happy
+       \let\subparagraph\oldsubparagraph
+       \let\paragraph\oldparagraph
+       %% Load titlesec
+       %\usepackage[compact]{titlesec}
+       \usepackage{titlesec}
+       %% Revert \subparagraph to the Rmd definition
+       % Redefines (sub)paragraphs to behave more like sections
+       \ifx\paragraph\undefined\else
+       \let\oldparagraph\paragraph
+       \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+       \fi
+       \ifx\subparagraph\undefined\else
+       \let\oldsubparagraph\subparagraph
+       \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+       \fi
+
+
+       %\titleformat{(command)}[(shape)]{(format)}{(label)}{(sep)}{(before)}[(after)]
+       \titleformat{\section}%
+       [block]% style du titre (block, hang, display, runin, leftmargin, drop, wrap)
+       {\Large\color[RGB]{0,153,255}}%changement de fonte commun au numéro et au titre
+       {\thesection.}% spécification du numéro
+       {1em}% 1em espace entre le numéro et le titre
+       {}% changement de fonte du titre
+
+       \titleformat{\subsection}%
+       [block]% style du titre (block, hang, display, runin, leftmargin, drop, wrap)
+       {\large\bfseries} %\itshape {\Large\bfseries\color[RGB]{0,153,255}}%changement de fonte commun au numéro et au titre
+       {\thesubsection.}% spécification du numéro
+       {1em}% {1em}% espace entre le numéro et le titre
+       {}% changement de fonte du titre
+
+       %\titlespacing*{(command)}{(left)}{(beforesep)}{(aftersep)}[(right)]
+       \titlespacing*{\section}{0em}{*4}{*1}
+
+       % A break for each new section with figures printed before new section
+       % \newcommand{\sectionbreak}{\clearpage}
+       % \newcommand{\sectionbreak}{\clearpage\phantomsection} % if hyperref loaded before titlesec
+
+       % Title numbering depth
+       \setcounter{secnumdepth}{3}
+       % Table of content depth
+       \setcounter{tocdepth}{3}
+       \renewcommand\contentsname{Content} % toc title
+
+        % Keep color format
+        \newcommand\sectionstylecolor[1]{\textcolor[RGB]{0,153,255}{#1}}
+
+
+       % -----------
+       % MISE EN FORME TEXTES SPECIAUX
+       % -----------
+       % Additionnal Text colors
+       \usepackage{xcolor}
+       \definecolor{backcolor}{RGB}{235, 235, 235}
+
+       \newcommand{\mybox}[1]{\par\noindent\colorbox{backcolor}
+       {\parbox{\dimexpr\textwidth-2\fboxsep\relax}{#1}}}
+
+       \newcommand{\keyword}[1]{\textcolor{red!60!black}{#1}}
+       \newcommand{\advert}[1]{\textit{\textcolor{orange!80!black}{#1}}}
+       \newcommand{\exo}[1]{\textit{\textcolor{green!80!black}{#1}}}
+       %\newcommand{\codecommand}[1]{\par\noindent\colorbox{backcolor}{\texttt{#1}}}
+       %\newcommand{\menucommand}[1]{\par\fontfamily{pcr}\fontsize{12}{12}\selectfont\color{red}\noindent\colorbox{shadecolor}{\textit{#1}}}{\par}
+       \newcommand{\menucommand}[1]{\textit{\textcolor{blue!80!black}{#1}}}
+       \newcommand{\codecommand}[1]{\texttt{\colorbox{backcolor}{#1}}}
+
+       \newenvironment{important}{\par\color{black!80!green}\itshape}{\par}
+
+       \newsavebox{\selvestebox}
+       \newenvironment{redbox}
+       {
+       \begin{lrbox}{\selvestebox}%
+       \begin{minipage}{\dimexpr\columnwidth-2\fboxsep\relax}}
+       {\end{minipage}\end{lrbox}%
+       \colorbox[HTML]{FF7F7F}{\usebox{\selvestebox}}
+       }
+
+       % \newsavebox{\selvestebox}
+       \newenvironment{codebox}{
+       \begin{lrbox}{\selvestebox}%
+       }{
+       \end{lrbox}%
+       \colorbox{backcolor}{\usebox{\selvestebox}}
+       }
+
+       % - source: http://tex.stackexchange.com/questions/82028/how-do-i-create-a-variant-of-the-snugshade-box-from-the-framed-package-to-wrap-m
+       \newenvironment{blueShaded}[1][D6E8F5]{
+       \definecolor{shadecolor}{HTML}{#1}%
+       \begin{snugshade}%
+       }{%
+       \end{snugshade}%
+       }
+
+       % -- command for pandoc trick with \begin and \end -- %
+       \newcommand{\nopandoc}[1]{#1}
+
+       % ----------
+       % Pour justifier le texte apres un alignement à gauche
+       % Utile pour le texte en caractère tt qui ne se coupe pas
+       % ----------
+       \usepackage{ragged2e}
+
+  % ----------
+% END pdf_sections
+  % ----------
+   
+      % \input{/mnt/Data/ThinkR/Gitlab/vignette-thinkr/latex/MiseEnFormeTitreFormationRmd_NoSectionBreak.tex}
+
+       
+     % ---------------
+% HEADER / FOOTER
+     % ---------------
+     \usepackage{fancyhdr}
+     \pagestyle{fancy}
+     %\fancyhf{}
+     \fancyhead[L]{
+     \hspace{-1cm}\LARGE{\textbf{\href{https://rtask.thinkr.fr}{\majorstylecolor{ThinkR}}}}\\
+     \hspace{-1cm}\normalsize{\Greytext{R report}}\\
+     %\normalsize{\href{url:https://statnmap.com/}{\majorstylecolor{http://statnmap.com/}}}
+     }
+     \fancyhead[R]{\Greytext{\textit{Created on \today}\hspace{-1cm}}}
+     %
+     \fancyfoot[L]{\hspace{-1cm}\Greytext{Sébastien, @StatnMap}}
+     \fancyfoot[C]{\href{mailto:sebastien@thinkr.fr}{sebastien@thinkr.fr}}
+     \fancyfoot[R]{\Greytext{\thepage\ / \pageref*{LastPage}\hspace{-1cm}}}
+     %\cfoot{Page \thepage\ (\theCurrentPage) of \lastpageref{LastPages}}
+     \renewcommand{\headrulewidth}{0pt}
+     \renewcommand{\footrulewidth}{0pt}
+     %\fancyheadoffset{length}
+
+      
+
+      % -- Graphic path -- %
+      % \graphicspath{{"/img/"}}
+
+      \setcounter{section}{0} % Value for first section
+       
+\hypersetup{pdfauthor=Sébastien_ _StatnMap, pdftitle=Title of the report, pdfsubject=Title of the report, pdfkeywords=R, pdfcreator=pdflatex}
+
+         %----------------------------------------------------------------------------------------
+         % TITLE PAGE
+         %----------------------------------------------------------------------------------------
+
+         \newcommand*{\titleGM}{\begingroup % Create the command for including the title page in the document
+         \hbox{ % Horizontal box
+         %\hspace*{0.2\textwidth} % Whitespace to the left of the title page
+         %\hspace*{0.2\textwidth}
+         \OtherGrey{\rule{1pt}{\textheight}} % Vertical line
+         \hspace*{0.05\textwidth} % Whitespace between the vertical line and title page text
+         \parbox[b]{0.75\textwidth}{ % Paragraph box which restricts text to less than the width of the page
+
+         {\noindent\Huge\bfseries\majorstylecolor{Title of the report}}\\[2\baselineskip] % Title
+         {\large{A template for PDF reports}}\\[4\baselineskip] % Tagline or further description
+         {\Large \textsc{Sébastien, @StatnMap, ThinkR}} % Author name
+
+         \vspace{0.5\textheight} % Whitespace between the title block and the publisher
+         {\noindent \href{https://rtask.thinkr.fr}{ThinkR}}\\[\baselineskip] % Publisher and logo
+         }}
+         \endgroup}
+
+         \AtBeginDocument{\let\maketitle\relax}
+          

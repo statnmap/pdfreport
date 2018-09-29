@@ -1,0 +1,51 @@
+---
+output :
+  bookdown::pdf_document2:
+    fig_caption: yes
+    highlight: tango
+    includes:
+      before_body: before_body.tex
+      in_header: header.tex
+    keep_tex: no
+    number_sections: yes
+    toc: yes
+geometry: top=2.4cm, bottom=2.1cm, outer=2cm, inner=4cm, headheight=40pt
+lang: en
+documentclass: article
+classoption: a4paper
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Section 1
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots with reference and caption as in Fig. \@ref(fig:pressure).
+
+(ref:FigCap) Pressure of cars  
+
+```{r pressure, echo=FALSE, fig.cap='(ref:FigCap)'}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+## A few extra
+
+\majorstylecolor{\textbackslash majorstylecolor\{Text with same color as main title\}}  
+\urlstylecolor{\textbackslash urlstylecolor\{Text with same color as url\}}  
+\sectionstylecolor{\textbackslash sectionstylecolor\{Text with same color as section title\}}  
+\keyword{\textbackslash keyword\{To put some word in darkred\}}  
+\advert{\textbackslash advert\{To put some words in orange and italic\}}

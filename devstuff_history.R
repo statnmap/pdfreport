@@ -28,4 +28,10 @@ usethis::use_mit_license("ThinkR")
 # Packages ----
 usethis::use_roxygen_md()
 usethis::use_pipe()
-attachment::att_to_description(dir.v = "")
+attachment::att_to_description()
+
+# Vignette ----
+usethis::use_readme_rmd()
+usethis::use_vignette("create-report-pdf")
+
+devtools::build_vignettes()
