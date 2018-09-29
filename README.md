@@ -17,9 +17,9 @@ prepare_for_knit(rmd.path = system.file("example/template_example.Rmd", package 
                  knit = TRUE, output_dir = tempdir())
 ```
 
-| ![Overview of the PDF template](https://github.com/statnmap/pdfreport/blob/master/img/template_example_demo.png) |
-|:----------------------------------------------------------------------------------------------------------------:|
-|                             Overview of the PDF template. Title page and normal page.                            |
+| ![Preview of the PDF template](https://raw.githubusercontent.com/statnmap/pdfreport/master/inst/img/template_example_demo.png) |
+|:------------------------------------------------------------------------------------------------------------------------------:|
+|                                    Preview of the PDF template. Title page and normal page.                                    |
 
 Installation
 ------------
