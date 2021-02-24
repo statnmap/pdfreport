@@ -8,6 +8,8 @@ Authors@R:
            email = "sebastien@thinkr.fr")
 Description: Create a tex file that defines caracteristics of
     your PDF report template.
+URL: https://github.com/statnmap/pdfreport
+BugReports: https://github.com/statnmap/pdfreport/issues
 License: MIT + file LICENSE
 Imports: 
     bookdown,

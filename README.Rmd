@@ -19,12 +19,17 @@ You can create custom PDF templates for your reports without worrying about the 
 
 Fonction `prepare_for_knit` will prepare everything you need in the directory of your Rmd file. You can even ask it to directly knit your pdf in the `output_dir` directory.  
 
-There is a template example in the package that you can prepare with the following command lines. The YAML is automatically filled with the correct options. Run these lines to see the results in PDF.  
+There is a template example in the package that you can prepare with the following command lines. The YAML is automatically filled with the correct options. Run these lines to see the results in PDF.   
+Later, you can use your own parameters as describe in the next sections.
 
 ```{r, eval=FALSE}
 library(pdfreport)
-prepare_for_knit(rmd.path = system.file("example/template_example.Rmd", package = "pdfreport"),
-                 knit = TRUE, output_dir = tempdir())
+# Define your paths
+path_to_my_rmd <- system.file("example/template_example.Rmd", package = "pdfreport")
+output_directory <- tempdir()
+# Create the default report
+prepare_for_knit(rmd.path = path_to_my_rmd,
+                 knit = TRUE, output_dir = output_directory)
 ```
 
 |![Preview of the PDF template](https://raw.githubusercontent.com/statnmap/pdfreport/master/inst/img/template_example_demo.png)|

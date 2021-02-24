@@ -231,6 +231,8 @@ pdf_title <- function(author, title, description, company, company_url) {
          % TITLE PAGE
          %----------------------------------------------------------------------------------------
 
+          % The original for this is the title page for Gentle Madness by Nicholas Basbanes [Bas95]
+
          \\newcommand*{\\titleGM}{\\begingroup % Create the command for including the title page in the document
          \\hbox{ % Horizontal box
          %\\hspace*{0.2\\textwidth} % Whitespace to the left of the title page
