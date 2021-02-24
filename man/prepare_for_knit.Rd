@@ -5,16 +5,30 @@
 \title{Prepare files for knit
 Prepare everything before knit. You can then knit the bookdown::pdf_book yourself}
 \usage{
-prepare_for_knit(rmd.path, fig_caption = TRUE, keep_tex = FALSE,
-  number_sections = TRUE, toc = TRUE, lang = "en",
+prepare_for_knit(
+  rmd.path,
+  fig_caption = TRUE,
+  keep_tex = FALSE,
+  number_sections = TRUE,
+  toc = TRUE,
+  lang = "en",
   out_format = c("pdf_document2", "pdf_book"),
-  author = "Sebastien, @StatnMap", title = "Title of the report",
+  author = "Sebastien, @StatnMap",
+  title = "Title of the report",
   description = "A template for PDF reports",
-  email = "sebastien@thinkr.fr", slogan = "R report",
-  created_on = "Created on", bg, bg.title, link.col = "#f67412",
-  section.color = "#0099ff", main.col = "#192ac7",
-  company = "ThinkR", company_url = "https://rtask.thinkr.fr",
-  knit = FALSE, output_dir)
+  email = "sebastien@thinkr.fr",
+  slogan = "R report",
+  created_on = "Created on",
+  bg,
+  bg.title,
+  link.col = "#f67412",
+  section.color = "#0099ff",
+  main.col = "#192ac7",
+  company = "ThinkR",
+  company_url = "https://rtask.thinkr.fr",
+  knit = FALSE,
+  output_dir
+)
 }
 \arguments{
 \item{rmd.path}{Path of the Rmd file to be knit}

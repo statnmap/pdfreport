@@ -3,3 +3,5 @@
 ^devstuff_history\.R$
 ^pdfreport\.Rproj$
 ^\.Rproj\.user$
+^dev$
+^\.github$

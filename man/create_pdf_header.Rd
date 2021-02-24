@@ -4,14 +4,22 @@
 \alias{create_pdf_header}
 \title{Create pdf header.tex file}
 \usage{
-create_pdf_header(author = "Author", title = "Title",
-  description = "Description", email = "email@email.com",
-  slogan = "R report", created_on = "Created on",
+create_pdf_header(
+  author = "Author",
+  title = "Title",
+  description = "Description",
+  email = "email@email.com",
+  slogan = "R report",
+  created_on = "Created on",
   bg = "Background_dark_topdown_ThinkR.png",
-  bg.title = "Background_Title_dark_ThinkR.png", link.col = "blue",
-  section.color = "forestgreen", main.col = "#192ac7",
-  out.header = file.path(tempdir(), "header.tex"), company = "Company",
-  company_url = "https://company.fr")
+  bg.title = "Background_Title_dark_ThinkR.png",
+  link.col = "blue",
+  section.color = "forestgreen",
+  main.col = "#192ac7",
+  out.header = file.path(tempdir(), "header.tex"),
+  company = "Company",
+  company_url = "https://company.fr"
+)
 }
 \arguments{
 \item{author}{Name of the author of the report}

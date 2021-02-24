@@ -4,9 +4,14 @@
 \alias{pdf_headerfooter}
 \title{Create header and footer of the pages}
 \usage{
-pdf_headerfooter(author, email, slogan = "R report",
-  created_on = "Created on", company = "ThinkR",
-  company_url = "https://thinkr.fr")
+pdf_headerfooter(
+  author,
+  email,
+  slogan = "R report",
+  created_on = "Created on",
+  company = "ThinkR",
+  company_url = "https://thinkr.fr"
+)
 }
 \arguments{
 \item{author}{Name of the author of the report}

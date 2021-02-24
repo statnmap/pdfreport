@@ -4,9 +4,12 @@
 \alias{pdf_layout}
 \title{Pdf Layout}
 \usage{
-pdf_layout(bg = "Background_dark_topdown_ThinkR.png",
-  bg.title = "Background_Title_dark_ThinkR.png", link.col = "#FF8000",
-  main.col = "#192ac7")
+pdf_layout(
+  bg = "Background_dark_topdown_ThinkR.png",
+  bg.title = "Background_Title_dark_ThinkR.png",
+  link.col = "#FF8000",
+  main.col = "#192ac7"
+)
 }
 \arguments{
 \item{bg}{path to PNG image used a main background}

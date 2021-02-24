@@ -4,11 +4,21 @@
 \alias{pdf_header}
 \title{Create content of latex header.tex file}
 \usage{
-pdf_header(author, title, email, description, slogan = "R report",
-  created_on = "Created on", bg = "Background_dark_topdown_ThinkR.png",
-  bg.title = "Background_Title_dark_ThinkR.png", link.col = "#FF8000",
-  section.color = "#2447c4", main.col = "#192ac7", company,
-  company_url)
+pdf_header(
+  author,
+  title,
+  email,
+  description,
+  slogan = "R report",
+  created_on = "Created on",
+  bg = "Background_dark_topdown_ThinkR.png",
+  bg.title = "Background_Title_dark_ThinkR.png",
+  link.col = "#FF8000",
+  section.color = "#2447c4",
+  main.col = "#192ac7",
+  company,
+  company_url
+)
 }
 \arguments{
 \item{author}{Name of the author of the report}

@@ -1,6 +1,11 @@
 
 # {pdfreport}
 
+<!-- badges: start -->
+
+[![R-CMD-check](https://github.com/statnmap/pdfreport/workflows/R-CMD-check/badge.svg)](https://github.com/statnmap/pdfreport/actions)
+<!-- badges: end -->
+
 You can create custom PDF templates for your reports without worrying
 about the lateX code. The template presented creates a first cover page
 and following pages with custom header, footer and background.

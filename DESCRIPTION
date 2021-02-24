@@ -8,9 +8,9 @@ Authors@R:
            email = "sebastien@thinkr.fr")
 Description: Create a tex file that defines caracteristics of
     your PDF report template.
+License: MIT + file LICENSE
 URL: https://github.com/statnmap/pdfreport
 BugReports: https://github.com/statnmap/pdfreport/issues
-License: MIT + file LICENSE
 Imports: 
     bookdown,
     grDevices,
@@ -23,4 +23,4 @@ VignetteBuilder:
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 6.1.0
+RoxygenNote: 7.1.1

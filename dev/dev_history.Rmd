@@ -1,0 +1,29 @@
+---
+title: "dev_history"
+author: "Sébastien Rochette"
+date: "24/02/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Hide files
+
+```{r}
+usethis::use_build_ignore("dev/")
+```
+
+# Add CI
+
+```{r}
+usethis::use_github_action_check_standard()
+```
+
+# Develop
+
+```{r}
+attachment::att_amend_desc()
+```
+

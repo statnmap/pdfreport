@@ -4,9 +4,15 @@
 \alias{prepare_yaml_for_knit}
 \title{Prepare yaml for knitting}
 \usage{
-prepare_yaml_for_knit(rmd.path, fig_caption = TRUE, keep_tex = FALSE,
-  number_sections = TRUE, toc = TRUE, lang = "en",
-  out_format = c("pdf_document2", "pdf_book"))
+prepare_yaml_for_knit(
+  rmd.path,
+  fig_caption = TRUE,
+  keep_tex = FALSE,
+  number_sections = TRUE,
+  toc = TRUE,
+  lang = "en",
+  out_format = c("pdf_document2", "pdf_book")
+)
 }
 \arguments{
 \item{rmd.path}{Path of the Rmd file to be knit}
